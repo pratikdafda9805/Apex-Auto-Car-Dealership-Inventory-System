@@ -1,0 +1,14 @@
+{
+  "name": "car-dealership-frontend",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Frontend for Car Dealership Inventory System",
+  "main": "js/api.js",
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0"
+  }
+}

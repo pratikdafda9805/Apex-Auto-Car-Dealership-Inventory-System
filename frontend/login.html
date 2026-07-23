@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — Apex Auto Dealership</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-white text-slate-900 flex flex-col min-h-screen justify-between relative overflow-hidden">
+  
+  <!-- Subtle ambient background glow -->
+  <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[32rem] h-[32rem] bg-emerald-500/10 blur-[130px] rounded-full pointer-events-none"></div>
+  <div class="absolute bottom-10 right-10 w-96 h-96 bg-teal-500/10 blur-[110px] rounded-full pointer-events-none"></div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="fixed top-5 right-5 z-50 flex flex-col space-y-2"></div>
+
+  <!-- Top Navigation Header -->
+  <header class="w-full max-w-7xl mx-auto p-6 flex justify-between items-center z-10 border-b border-slate-100">
+    <div class="flex items-center space-x-3">
+      <div class="p-2.5 bg-gradient-to-tr from-emerald-600 to-teal-500 rounded-2xl shadow-md shadow-emerald-500/20">
+        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
+        </svg>
+      </div>
+      <div>
+        <span class="font-extrabold text-2xl tracking-tight text-slate-900">APEX<span class="text-emerald-600">AUTO</span></span>
+        <span class="hidden sm:inline-block ml-2 text-[10px] uppercase font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">v2.0 Portal</span>
+      </div>
+    </div>
+    <a href="register.html" class="text-xs sm:text-sm font-bold text-emerald-600 hover:text-emerald-700 transition flex items-center space-x-1 hover:underline">
+      <span>Create Account</span>
+      <span>&rarr;</span>
+    </a>
+  </header>
+
+  <!-- Main Login Card -->
+  <main class="w-full max-w-md mx-auto p-6 z-10 my-auto">
+    <div class="light-panel p-8 rounded-3xl shadow-xl animate-fade-in border border-slate-200 bg-white">
+      <div class="text-center mb-8">
+        <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-emerald-50 border border-emerald-200 mb-3 text-emerald-600 shadow-sm animate-float">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+          </svg>
+        </div>
+        <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Welcome Back</h1>
+        <p class="text-slate-500 text-xs sm:text-sm mt-1">Sign in to manage & browse your vehicle dealership</p>
+      </div>
+
+      <form id="login-form" class="space-y-5">
+        <div>
+          <label for="email" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Email Address</label>
+          <div class="relative">
+            <input type="email" id="email" required placeholder="name@example.com" class="w-full px-4 py-3.5 pl-11 rounded-xl light-input text-sm font-medium">
+            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <label for="password" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Password</label>
+          <div class="relative">
+            <input type="password" id="password" required placeholder="••••••••" class="w-full px-4 py-3.5 pl-11 pr-11 rounded-xl light-input text-sm font-medium">
+            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+            </div>
+            <button type="button" id="toggle-password-btn" class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-700 transition">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" id="submit-btn" class="w-full py-3.5 px-4 btn-emerald rounded-xl transition duration-200 flex justify-center items-center space-x-2 text-sm shadow-md">
+          <span>Sign In to Account</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </button>
+      </form>
+
+      <!-- Quick Demo Presets -->
+      <div class="mt-6 pt-6 border-t border-slate-100 text-center">
+        <p class="text-xs font-bold text-slate-500 mb-3 uppercase tracking-wider">Quick Demo Login Presets</p>
+        <div class="grid grid-cols-2 gap-3">
+          <button type="button" id="fill-user-btn" class="px-3 py-2.5 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-300 border border-slate-200 rounded-xl text-slate-700 hover:text-emerald-800 transition text-xs font-bold flex items-center justify-center space-x-1.5 shadow-sm">
+            <span>👤 Customer</span>
+          </button>
+          <button type="button" id="fill-admin-btn" class="px-3 py-2.5 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 rounded-xl text-emerald-800 transition text-xs font-bold flex items-center justify-center space-x-1.5 shadow-sm">
+            <span>🛡️ Admin Panel</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="text-center p-6 text-slate-400 text-xs border-t border-slate-100">
+    &copy; 2026 Apex Auto Systems. Powered by FastAPI & Vanilla JS.
+  </footer>
+
+  <script type="module" src="js/auth.js"></script>
+</body>
+</html>

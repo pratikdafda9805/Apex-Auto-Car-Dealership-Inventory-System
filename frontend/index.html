@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apex Auto — Car Dealership Inventory</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-white text-slate-900 flex items-center justify-center min-h-screen">
+  <div class="text-center animate-fade-in">
+    <div class="p-3 bg-emerald-100 rounded-2xl w-16 h-16 mx-auto mb-4 flex items-center justify-center border border-emerald-200">
+      <div class="animate-spin rounded-full h-8 w-8 border-3 border-emerald-600 border-t-transparent"></div>
+    </div>
+    <h2 class="text-xl font-extrabold text-slate-900 mb-1">Apex Auto Systems</h2>
+    <p class="text-slate-500 text-xs">Loading vehicle portal...</p>
+  </div>
+  <script type="module">
+    import { isAuthenticated } from './js/utils.js';
+    if (isAuthenticated()) {
+      window.location.href = 'dashboard.html';
+    } else {
+      window.location.href = 'login.html';
+    }
+  </script>
+</body>
+</html>
